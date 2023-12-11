@@ -20,7 +20,7 @@ public class Category {
     private int id;
 
     @NotBlank
-    @Size(min = 2, max = 128)
+    @Size(min = 2, max = 32)
     @Column(name = "title")
     private String title;
 
