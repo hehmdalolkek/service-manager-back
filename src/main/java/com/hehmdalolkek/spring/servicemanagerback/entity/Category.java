@@ -6,7 +6,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -25,7 +26,7 @@ public class Category {
 
     @OneToMany(mappedBy = "category")
     @JsonIgnore
-    private Set<Service> services = new HashSet<>(0);
+    private List<Service> services = new ArrayList<>();
 
     public Category() {
     }
@@ -46,11 +47,11 @@ public class Category {
         this.title = title;
     }
 
-    public Set<Service> getServices() {
-        return services;
+    public void setServices(List<Service> services) {
+        this.services = services;
     }
 
-    public void setServices(Set<Service> services) {
-        this.services = services;
+    public List<Service> getServices() {
+        return services;
     }
 }
