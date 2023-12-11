@@ -19,7 +19,7 @@ public class Service {
 
     @Column(name = "title")
     @NotBlank
-    @Size(min = 2, max = 128)
+    @Size(min = 2, max = 64)
     private String title;
 
     @ManyToOne
