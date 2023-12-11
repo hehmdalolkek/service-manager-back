@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
 
-import java.sql.Timestamp;
+import java.time.Instant;
 
 @Entity
 @Table(name = "services")
@@ -36,7 +36,7 @@ public class Service {
 
     @Column(name = "change_date")
     @Past
-    private Timestamp change_date;
+    private Instant change_date;
 
 
     public Service() {
@@ -82,11 +82,11 @@ public class Service {
         this.price = price;
     }
 
-    public Timestamp getChange_date() {
+    public Instant getChange_date() {
         return change_date;
     }
 
-    public void setChange_date(Timestamp change_date) {
+    public void setChange_date(Instant change_date) {
         this.change_date = change_date;
     }
 }
