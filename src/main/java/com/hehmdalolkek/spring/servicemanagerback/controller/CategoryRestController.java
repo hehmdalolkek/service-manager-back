@@ -12,7 +12,6 @@ import java.util.List;
 @RequestMapping("/api")
 public class CategoryRestController {
 
-    @Autowired
     private CategoryService categoryService;
 
     @GetMapping("/categories/{id}")
@@ -40,4 +39,8 @@ public class CategoryRestController {
         categoryService.deleteCategoryById(id);
     }
 
+    @Autowired
+    public void setCategoryService(CategoryService categoryService) {
+        this.categoryService = categoryService;
+    }
 }

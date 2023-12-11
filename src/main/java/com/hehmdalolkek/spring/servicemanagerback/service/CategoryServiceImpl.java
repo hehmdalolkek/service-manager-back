@@ -15,7 +15,6 @@ import java.util.List;
 @Validated
 public class CategoryServiceImpl implements CategoryService {
 
-    @Autowired
     private CategoryRepository categoryRepository;
 
     @Override
@@ -56,5 +55,10 @@ public class CategoryServiceImpl implements CategoryService {
         }
 
         categoryRepository.deleteById(id);
+    }
+
+    @Autowired
+    public void setCategoryRepository(CategoryRepository categoryRepository) {
+        this.categoryRepository = categoryRepository;
     }
 }
