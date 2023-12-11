@@ -10,7 +10,8 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 
-import java.sql.Timestamp;
+
+import java.time.LocalDateTime;
 import java.util.List;
 
 @org.springframework.stereotype.Service
@@ -41,16 +42,16 @@ public class ServiceServiceImpl implements ServiceService {
         service.setDuration(newService.getDuration());
         service.setPrice(newService.getPrice());
 
-        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        service.setChange_date(timestamp.toInstant());
+        LocalDateTime localDateTime = LocalDateTime.now();
+        service.setChange_date(String.valueOf(localDateTime));
 
         serviceRepository.save(service);
     }
 
     @Override
     public void addService(@Valid Service service) {
-        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        service.setChange_date(timestamp.toInstant());
+        LocalDateTime localDateTime = LocalDateTime.now();
+        service.setChange_date(String.valueOf(localDateTime));
 
         serviceRepository.save(service);
     }

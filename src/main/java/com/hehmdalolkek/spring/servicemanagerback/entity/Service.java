@@ -3,10 +3,8 @@ package com.hehmdalolkek.spring.servicemanagerback.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
 
-import java.time.Instant;
 
 @Entity
 @Table(name = "services")
@@ -35,8 +33,7 @@ public class Service {
     private double price;
 
     @Column(name = "change_date")
-    @Past
-    private Instant change_date;
+    private String change_date;
 
 
     public Service() {
@@ -82,11 +79,11 @@ public class Service {
         this.price = price;
     }
 
-    public Instant getChange_date() {
+    public String  getChange_date() {
         return change_date;
     }
 
-    public void setChange_date(Instant change_date) {
+    public void setChange_date(String change_date) {
         this.change_date = change_date;
     }
 }
