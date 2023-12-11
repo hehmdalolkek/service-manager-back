@@ -1,9 +1,13 @@
 package com.hehmdalolkek.spring.servicemanagerback.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "categories")
@@ -18,6 +22,10 @@ public class Category {
     @Size(min = 2, max = 128)
     @Column(name = "title")
     private String title;
+
+    @OneToMany(mappedBy = "category")
+    @JsonIgnore
+    private Set<Service> services = new HashSet<>(0);
 
     public Category() {
     }
@@ -36,5 +44,13 @@ public class Category {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public Set<Service> getServices() {
+        return services;
+    }
+
+    public void setServices(Set<Service> services) {
+        this.services = services;
     }
 }
