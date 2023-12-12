@@ -1,6 +1,6 @@
 package com.hehmdalolkek.spring.servicemanagerback.controller;
 
-import org.springframework.http.HttpRequest;
+import com.hehmdalolkek.spring.servicemanagerback.security.LoginRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,12 +11,11 @@ import org.springframework.web.bind.annotation.*;
 public class SecurityRestController {
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestParam String username,
-            @RequestParam String password) {
-        if (username.equals("admin") && password.equals("admin")) {
-            return ResponseEntity.ok("Ok");
+    public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
+        if (loginRequest.getUsername().equals("admin") && loginRequest.getPassword().equals("admin")) {
+            return ResponseEntity.ok().build();
         } else {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Ошибка аутентификации");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
     }
 
