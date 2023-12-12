@@ -20,6 +20,11 @@ public class Service {
     @Size(min = 2, max = 64)
     private String title;
 
+    @Column(name = "description")
+    @NotBlank
+    @Size(min = 2, max = 1000)
+    private String description;
+
     @ManyToOne
     @JoinColumn(name = "category", referencedColumnName = "id")
     private Category category;
@@ -53,6 +58,14 @@ public class Service {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Category getCategory() {

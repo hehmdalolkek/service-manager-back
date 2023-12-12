@@ -38,6 +38,7 @@ public class ServiceServiceImpl implements ServiceService {
                 .orElseThrow(() -> new ServiceNotFoundException(id));
 
         service.setTitle(newService.getTitle());
+        service.setDescription(newService.getDescription());
         service.setCategory(newService.getCategory());
         service.setDuration(newService.getDuration());
         service.setPrice(newService.getPrice());
