@@ -30,11 +30,11 @@ public class Service {
     private Category category;
 
     @Column(name = "duration")
-    @Min(0)
+    @Min(1)
     private int duration;
 
     @Column(name = "price")
-    @Min(0)
+    @Min(1)
     private double price;
 
     @Column(name = "change_date")
