@@ -2,6 +2,7 @@ package com.hehmdalolkek.spring.servicemanagerback.service;
 
 import com.hehmdalolkek.spring.servicemanagerback.dao.CategoryRepository;
 import com.hehmdalolkek.spring.servicemanagerback.entity.Category;
+import com.hehmdalolkek.spring.servicemanagerback.exceptions.CategoryIsNotEmptyException;
 import com.hehmdalolkek.spring.servicemanagerback.exceptions.CategoryNotFoundException;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -50,8 +51,11 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     @Transactional
     public void deleteCategoryById(int id) {
-        if (!categoryRepository.existsById(id)) {
-            throw new CategoryNotFoundException(id);
+        Category category = categoryRepository.findById(id)
+                .orElseThrow(() -> new CategoryNotFoundException(id));
+
+        if (!category.getServices().isEmpty()) {
+            throw new CategoryIsNotEmptyException(id);
         }
 
         categoryRepository.deleteById(id);
